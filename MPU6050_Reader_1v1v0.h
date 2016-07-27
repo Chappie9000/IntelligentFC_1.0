@@ -65,9 +65,9 @@ public:
       
      Device.initialize();//initialize MPU6050
      
-     Device.setDLPFMode(0);// set sample rate to 8kHz
+     Device.setDLPFMode(0);// set gyro sample rate to 8kHz
      
-     Device.setFullScaleGyroRange(2);// set gyre range to +/- 1000 deg/sec
+     Device.setFullScaleGyroRange(2);// set gyro range to +/- 1000 deg/sec
      
      Device.setFullScaleAccelRange(3);//set accel range to +/- 16g
      

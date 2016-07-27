@@ -15,4 +15,4 @@ User Operation:
 For a user to use this software, they must download Arduino IDE, install Due board driver through Arduino IDE, clone this repository, open the main .ino file with Arduino IDE, specify user preferences in a particular header file, and upload the code to the proper board. I will eventually provide schematics for a shield to provide easy hobbyist accessability to the board.
 
 Developer Guidelines:
-All functionality must exist either in the standard Arduino IDE c/c++ libraries, or be fully expressed in committed source code. No 3rd party intallations can be required. MIT License prefered. Hardware additions are welcome, please include hardware documentation and follow all developer guidelines.
+All functionality must exist either in the standard Arduino IDE c/c++ libraries, or be fully expressed in committed source code. No 3rd party intallations can be required. Hardware additions are welcome, please include hardware documentation and follow all developer guidelines.

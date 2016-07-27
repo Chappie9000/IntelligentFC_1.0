@@ -74,7 +74,7 @@ void loop(){// Main control loop. Runs forever until power loss.
 
 //Print data to serial usb.
 
-Serial.print("loops/s:"); Serial.print(LoopsPerSec); Serial.print("\t");//Print loops per secons.
+Serial.print("loops/s:"); Serial.print(LoopsPerSec); Serial.print("\t");//Print loops per seconds.
 
 Serial.print(MPU_Device.Pitch); Serial.print(",\t");// Print calculated Pitch.
 

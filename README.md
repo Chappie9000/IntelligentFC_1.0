@@ -1,6 +1,6 @@
 # IntelligentFC_1.0
 Author notes:
-If you stumble upon this project and are interested in developing, I am open to colaboration on the code and vision/use. Feel free to offer edits to the README.md.
+If you stumble upon this project and are interested in developing, I am open to colaboration on the code. 
 
 I am building this repository for anyone who wishes they had a simple method for uploading to their Arduino board existing, complete, and easy to read code for a multi-rotor quad-copter. My goal is the only downloads are the Arduino IDE and this repository and all code necessary is contained in included source files. I also try to comment on every possible line I write to give an english narraration of the code to help developers and tinkerers. I will also provide dynamic controllers that eliminate the majority of the PID tuning effort. Instead of a GUI, I plan on making this system's setup a text file where the user can change the values of various variables, affecting features, while also giving the user full access to the control loop code so they can make any modifications. Yet, if the user just wants to fly, no setup is necessary. 
 

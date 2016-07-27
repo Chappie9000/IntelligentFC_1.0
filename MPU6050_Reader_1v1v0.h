@@ -89,17 +89,17 @@ public:
   
   Device.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);//Get raw data from MPU6050
 
-  Ax = Ax*0.9 + ax*0.1;//smooth raw date running average over 10 samples.
+  Ax = Ax*0.9 + ax*0.1;//smooth raw data running average over 10 samples.
   
-  Ay = Ay*0.9 + ay*0.1;//smooth raw date running average over 10 samples.
+  Ay = Ay*0.9 + ay*0.1;//smooth raw data running average over 10 samples.
   
-  Az = Az*0.9 + az*0.1;//smooth raw date running average over 10 samples.
+  Az = Az*0.9 + az*0.1;//smooth raw data running average over 10 samples.
 
-  Gx = Gx*0.9 + gx*0.1;//smooth raw date running average over 10 samples.
+  Gx = Gx*0.9 + gx*0.1;//smooth raw data running average over 10 samples.
   
-  Gy = Gy*0.9 + gy*0.1;//smooth raw date running average over 10 samples.
+  Gy = Gy*0.9 + gy*0.1;//smooth raw data running average over 10 samples.
   
-  Gz = Gz*0.9 + gz*0.1;//smooth raw date running average over 10 samples.
+  Gz = Gz*0.9 + gz*0.1;//smooth raw data running average over 10 samples.
 
   Gx /= 3276.8;//normalize gyro to (-1.0 , 1.0)
   

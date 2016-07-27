@@ -7,8 +7,7 @@ When I first started experimenting with multi-rotors, I wanted to build my own f
 I am building this repository for anyone who wishes they had a simple method for uploading to their Arduino board existing code for a multi-rotor quad-copter. My goal is the only downloads are the Arduino IDE and this repository and all code necessary is contained in included source files. I also try to comment on every possible line I write to give an english narraration of the code to help developers and tinkerers. I will also provide dynamic controllers that eliminate the majority of the PID tuning effort. I also don't prefer most of the existing multi-rotor setup GUIs, so I plan on making this system's setup a text file where the user can change the values of various variables, effecting features, while also giving the user full access to the control loop code so they can make any modifications. Yet, if the user just wants to fly, no setup is necessary.
 
 Current hardware: 
--Arduino Due
--MPU6050
+Arduino Due, MPU6050
 
 Abstract:
 A racing/performance multi-rotor flight controller software, built to piggy-back on Arduino IDE and hardware, primarily employing artificial intelligence to minimize user tuning. Heavily focused on transparency, portability, and independence.

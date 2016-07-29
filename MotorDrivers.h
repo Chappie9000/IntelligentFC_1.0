@@ -3,7 +3,7 @@
 
 
 /* ============================================
-MotorDriver_Templates.h is placed under the MIT license
+MotorDrivers.h is placed under the MIT license
 Copyright (c) 2016 Eric LoPrete
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

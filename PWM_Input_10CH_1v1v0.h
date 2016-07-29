@@ -25,6 +25,8 @@ THE SOFTWARE.
 ===============================================
 */
 
+#ifndef _PWM_INPUT_10CH_1V1V0_H_INCLUDED_
+#define _PWM_INPUT_10CH_1V1V0_H_INCLUDED_
 
 #include "Arduino.h"
 
@@ -35,9 +37,13 @@ namespace PWM_Input_10CH_1v1v0{//namespace for 10 channel PWM-input version 1.1.
  
 // PWM_Input namespace is primarily for creating and handling PWM inputs from radio recievers.
 // It uses a pin interupt to calculate the pulse width in microseconds.
-// The values are available as namespace local variables
-// Since the interrupt functions need to be static with no arguments, I don't know how to make some polymorphic object for dynamically creating interrupt tasks.
-// So unfortunatelly this namespace is static, with 10 channels/interrupts. 
+// The values are available as namespac static local variables
+// The interrupt functions need to be static with no arguments.
+// I don't know how to make some polymorphic object for dynamically creating static interrupt tasks.
+// So unfortunatelly this namespace is static.
+// I made 10 channels/interrupts to leave some room for extra functionality.
+// Having unused pin interrupts build and running doesn't significantly reduce performance. 
+// The next step is probably making a serial reader protocol.
 // Contribution to this would be welcome.
 
 
@@ -331,3 +337,5 @@ namespace PWM_Input_10CH_1v1v0{//namespace for 10 channel PWM-input version 1.1.
   }
  
 }
+
+#endif

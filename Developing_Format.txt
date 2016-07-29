@@ -1,0 +1,170 @@
+
+/* ============================================
+Developing_Format.txt is placed under the MIT license
+Copyright (c) 2016 Eric LoPrete
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+===============================================
+*/
+
+
+
+This file is meant to provide details on how to use this SDK.
+
+Class templates exist in files with the name "Something_Templates.h".
+
+For example, "MotionSensor_Prototypes.h" contains templates for deriving classes that communicate with motion sensors.
+To develop a new class to handle an unsupported sensor or to make a new version, the developer will choose the appropriate class template
+and proceed making their custom instructions using the template's member functions and variables. Unique member functions
+and variables are allowed but must remain local in the class. Only the template's provided functions should be used in any implementation
+of the new class.
+
+Example:
+
+Example_Templates.h:[
+
+class Foo {// Original template
+public:
+ int Bar;
+ void Build();
+ void DoSomething();
+};
+
+]///////////////////////end of file
+
+
+
+JoesCustomExampleClass.h:[
+
+#include "Example_Templates.h"
+
+class JoesFoo: public Foo{// Developer Joe's custom version of the class Foo
+ public:
+ int Bar;
+ void Build(){
+  Bar = 0;
+ }
+ void DoSomething(){
+  if(Bar > 10){
+   Bar += 1;
+  }else{
+   Bar = 0;
+ }
+ 
+};//end of class
+
+]///////////////////////end of file
+
+
+
+
+BobsCustomExampleClass.h:[
+#include "Example_Templates.h"
+
+class BobsFoo: public Foo{// Developer Bob's custom version of the class Foo
+ public:
+ int Bar;
+ int UniqueVariable;
+ void Build(){
+  Bar = -10;
+  UniqueVariable = 9;
+ }
+ void DoSomethingElse(int bar){
+  Bar = bar; 
+  UniqueVariable = Bar + 4;
+ }
+ void DoSomething(){
+  Bar *= 3 + UniqueVariable;
+  DoSomethingElse(8);
+ }
+ 
+};//end of class
+
+]///////////////////////end of file
+
+
+TedsOtherClass.h[
+
+#include "BobsCustomExampleClass.h"
+
+class TedsClass{// Ted's class that employs BobsFoo class and potentially JoesFoo class.
+ public:
+  BobsFoo InternalFoo;
+  int ArbitraryVariable;
+  void DoATask(){
+   InternalFoo.DoSomething();
+   ArbitraryVariable = InternalFoo.Bar;
+  }
+};
+
+]//////////////////////end of file
+
+
+
+MainFile.ino:[
+
+#include "BobsCustomExampleClass.h"
+//#include "JoesCustomExampleClass.h" // First place where code may be changed. include if JoesFoo is to be used.
+
+
+//Final place where code is changed
+BobsFoo PrimaryFooClass;//class to build derived from template
+// To use JoesFoo, simply change the text "BobsFoo" to "JoesFoo" and include the propper header file. Leave the text "PrimaryFooClass" untouched. 
+
+
+//The following code should never require changes in the standard use case. Only advanced users should consider changes for their personal use.
+setup{
+ PrimaryFooClass.Build();//initialize class
+}
+
+loop{
+ PrimaryFooClass.DoSomething(); //perform task
+ int ArbitraryVariable = PrimaryFooClass.Bar;// access member variable
+}
+
+]////////////////////end of file
+
+
+Summary:
+This system lets a user with limited understanding of the code in a particular class choose
+which class version they want to use on the basis of a plain English description, without requiring changes to the main "setup" and "loop" code.
+A user can choose to use "BobsFoo" or "JoesFoo" by simply changing the class name. And developers
+can make any number of parallel derivations of the template. 
+
+In this example Bob added a unique member variable and function. Notice how that wont require any
+changes to the "setup" or "loop" code. Only the initial type declaration of the PrimaryFooClass requires change. 
+This also gives developers freedom to experiment with wacky designs without eliminating compatibility with
+existing code. 
+
+This also allows the same compatibility with developer Ted's TedsClass. Ted can use Foo template derivatives without fear of incompatibility. 
+
+Templates will be the hardest to change and will likely require different versions of the .ino file, thus the entire repo. As the admin,
+I will pay close attention to this and will heavily regulate class template additions. Templates should never change, only new templates added.
+
+
+
+
+
+
+
+
+
+
+
+
